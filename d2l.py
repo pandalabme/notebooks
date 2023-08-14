@@ -7,6 +7,7 @@ import torch
 from torch import nn
 
 
+
 def add_to_class(Class):
     def wrapper(obj):
         setattr(Class, obj.__name__, obj)
