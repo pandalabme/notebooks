@@ -109,3 +109,7 @@ To https://github.com/pandalabme/notebooks.git
  rewrite ch3.ipynb (61%)
 To https://github.com/pandalabme/notebooks.git
    2250daa..0597f65  main -> main
+[main d0ec1e7] auto
+ 2 files changed, 1185 insertions(+), 226 deletions(-)
+To https://github.com/pandalabme/notebooks.git
+   0597f65..d0ec1e7  main -> main
