@@ -62,3 +62,6 @@ To https://github.com/pandalabme/notebooks.git
  1 file changed, 4 insertions(+)
 To https://github.com/pandalabme/notebooks.git
    1b2b7d7..aaa3ff2  main -> main
+[main 687e5d6] auto
+ 1 file changed, 4 insertions(+)
+fatal: could not read Username for 'https://github.com': No such device or address
