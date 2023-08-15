@@ -132,14 +132,16 @@ class Module(nn.Module, HyperParameters):
         self.board.draw(x, value.detach().numpy(),
                         ('train_' if train else 'val_') + key, every_n=int(n))
 
-    def training_step(self, batch):
+    def training_step(self, batch, plot_flag=True):
         l = self.loss(self(*batch[:-1]), batch[-1])
-        self.plot('loss', l, train=True)
+        if plot_flag:
+            self.plot('loss', l, train=True)
         return l
 
-    def validation_step(self, batch):
+    def validation_step(self, batch, plot_flag=True):
         l = self.loss(self(*batch[:-1]),batch[-1])
-        self.plot('loss', l, train=False)
+        if plot_flag:
+            self.plot('loss', l, train=False)
         return l
 
     def configure_optimizers(self):
@@ -168,7 +170,8 @@ class SGD(HyperParameters):
                 param.grad.zero_()
         
 class Trainer(HyperParameters):
-    def __init__(self, max_epochs, num_gpus=0, gradient_clip_val=0):
+    def __init__(self, max_epochs, num_gpus=0, gradient_clip_val=0,
+                 plot_flag=True):
         self.save_hyperparameters()
         assert num_gpus == 0, 'No gpu support yet'
         
@@ -206,13 +209,14 @@ class Trainer(HyperParameters):
         for batch in self.train_dataloader:
             # if len(batch[0]) != 32:
             #     print(len(batch[0]))
-            loss = self.model.training_step(self.prepare_batch(batch))
+            loss = self.model.training_step(self.prepare_batch(batch),
+                                            plot_flag=self.plot_flag)
             # print(f'step train loss:{loss}, T:{self.model.T}')
             self.optim.zero_grad()
             with torch.no_grad():
                 loss.backward()
                 if self.gradient_clip_val > 0:
-                    self.clip_gradients(self.gradient_clip_val,self.model)
+                    self.clip_gradients(self.gradient_clip_val, self.model)
                 self.optim.step()
             self.train_batch_idx += 1
             # train_loss += loss.detach().numpy()
@@ -222,7 +226,8 @@ class Trainer(HyperParameters):
         self.model.eval()
         for batch in self.val_dataloader:
             with torch.no_grad():
-                loss = self.model.validation_step(self.prepare_batch(batch))
+                loss = self.model.validation_step(self.prepare_batch(batch),
+                                                  plot_flag=self.plot_flag)
             self.val_batch_idx += 1
             # valid_loss += loss.detach().numpy()
         # print(f'batch train loss:{train_loss:.2g}, valid loss:{valid_loss:.2g}, T:{self.model.T}')

@@ -113,3 +113,11 @@ To https://github.com/pandalabme/notebooks.git
  2 files changed, 1185 insertions(+), 226 deletions(-)
 To https://github.com/pandalabme/notebooks.git
    0597f65..d0ec1e7  main -> main
+[main 5f8898a] auto
+ 4 files changed, 19361 insertions(+), 161 deletions(-)
+ rename ch3.ipynb => ch3/.ipynb_checkpoints/3_4_6_Exercises-checkpoint.ipynb (100%)
+ rename ch4.ipynb => ch3/.ipynb_checkpoints/3_5_6_Exercises-checkpoint.ipynb (72%)
+ create mode 100755 ch3/3_4_6_Exercises.ipynb
+ create mode 100644 ch3/3_5_6_Exercises.ipynb
+To https://github.com/pandalabme/notebooks.git
+   08c3b31..5f8898a  main -> main
