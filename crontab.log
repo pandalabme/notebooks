@@ -91,3 +91,8 @@ To https://github.com/pandalabme/notebooks.git
  2 files changed, 4224 insertions(+), 3450 deletions(-)
 To https://github.com/pandalabme/notebooks.git
    91992d4..7613d62  main -> main
+[main 0fd93cc] auto
+ 5 files changed, 4547 insertions(+), 3624 deletions(-)
+ rewrite ch4.ipynb (63%)
+To https://github.com/pandalabme/notebooks.git
+   7613d62..0fd93cc  main -> main

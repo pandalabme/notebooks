@@ -202,7 +202,7 @@ class Trainer(HyperParameters):
     
     def fit_epoch(self):
         self.model.train()
-        train_loss,valid_loss = 0, 0
+        # train_loss,valid_loss = 0, 0
         for batch in self.train_dataloader:
             loss = self.model.training_step(self.prepare_batch(batch))
             # print(f'step train loss:{loss}, T:{self.model.T}')
@@ -213,17 +213,17 @@ class Trainer(HyperParameters):
                     self.clip_gradients(self.gradient_clip_val,self.model)
                 self.optim.step()
             self.train_batch_idx += 1
-            train_loss += loss.detach().numpy()
+            # train_loss += loss.detach().numpy()
         if self.val_dataloader is None:
-            print(f'batch train loss:{train_loss:.2g}, T:{self.model.T}')
+            # print(f'batch train loss:{train_loss:.2g}, T:{self.model.T}')
             return
         self.model.eval()
         for batch in self.val_dataloader:
             with torch.no_grad():
                 loss = self.model.validation_step(self.prepare_batch(batch))
             self.val_batch_idx += 1
-            valid_loss += loss.detach().numpy()
-        print(f'batch train loss:{train_loss:.2g}, valid loss:{valid_loss:.2g}, T:{self.model.T}')
+            # valid_loss += loss.detach().numpy()
+        # print(f'batch train loss:{train_loss:.2g}, valid loss:{valid_loss:.2g}, T:{self.model.T}')
             
     def clip_gradients(self, grad_clip_val, model):
         params = [p for p in model.parameters() if p.requires_grad]
