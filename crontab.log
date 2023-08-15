@@ -65,3 +65,6 @@ To https://github.com/pandalabme/notebooks.git
 [main 687e5d6] auto
  1 file changed, 4 insertions(+)
 fatal: could not read Username for 'https://github.com': No such device or address
+[main 81f221d] auto
+ 1 file changed, 3 insertions(+)
+fatal: could not read Username for 'https://github.com': No such device or address
