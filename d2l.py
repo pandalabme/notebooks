@@ -204,6 +204,8 @@ class Trainer(HyperParameters):
         self.model.train()
         # train_loss,valid_loss = 0, 0
         for batch in self.train_dataloader:
+            # if len(batch[0]) != 32:
+            #     print(len(batch[0]))
             loss = self.model.training_step(self.prepare_batch(batch))
             # print(f'step train loss:{loss}, T:{self.model.T}')
             self.optim.zero_grad()
