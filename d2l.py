@@ -289,7 +289,7 @@ def set_axes(axes, xlabel, ylabel, xlim, ylim, xscale, yscale, legend):
     axes.set_xscale(xscale)
     axes.set_yscale(yscale)
     if legend:
-        axes.legend(legend)
+        axes.legend(legend, loc='upper right')
     axes.grid()
 
 
