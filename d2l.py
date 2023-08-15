@@ -7,7 +7,6 @@ import torch
 from torch import nn
 
 
-
 def add_to_class(Class):
     def wrapper(obj):
         setattr(Class, obj.__name__, obj)
@@ -106,19 +105,20 @@ class DataModule(HyperParameters):
         return torch.utils.data.DataLoader(dataset, self.batch_size,
                                            shuffle=train)
 
+
 class Module(nn.Module, HyperParameters):
     def __init__(self, plot_train_per_epoch=2, plot_valid_per_epoch=1):
         super().__init__()
         self.save_hyperparameters()
         self.board = ProgressBoard()
-        
+
     def loss(self, y_hat, y):
         raise NotImplementedError
-        
+
     def forward(self, X):
         assert(self, 'net'), 'Neural network is defined'
         return self.net(X)
-    
+
     def plot(self, key, value, train):
         assert(self, 'trainer'), 'trainer is not inited'
         self.board.xlabel = 'epoch'
@@ -127,26 +127,26 @@ class Module(nn.Module, HyperParameters):
             n = self.trainer.num_train_batches / self.plot_train_per_epoch
         else:
             x = self.trainer.epoch + 1
-            # x = self.trainer.val_batch_idx / self.trainer.num_val_batches + 0.5
             n = self.trainer.num_val_batches / self.plot_valid_per_epoch
         # print(train,x)
-        self.board.draw(x, value.detach().numpy(), ('train_' if train else 'val_') + key, every_n = int(n))
-        
+        self.board.draw(x, value.detach().numpy(),
+                        ('train_' if train else 'val_') + key, every_n=int(n))
+
     def training_step(self, batch):
-        l = self.loss(self(*batch[:-1]),batch[-1])
+        l = self.loss(self(*batch[:-1]), batch[-1])
         self.plot('loss', l, train=True)
         return l
-    
+
     def validation_step(self, batch):
         l = self.loss(self(*batch[:-1]),batch[-1])
         self.plot('loss', l, train=False)
-        
+
     def configure_optimizers(self):
         return NotImplementedError
-    
+
     def configure_optimizers(self):
         return torch.optim.SGD(self.parameters(), lr=self.lr)
-    
+
     def apply_init(self, inputs, init=None):
         self.forward(*inputs)
         if init is not None:
