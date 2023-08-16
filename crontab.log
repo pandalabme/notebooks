@@ -210,3 +210,9 @@ To https://github.com/pandalabme/notebooks.git
  rewrite ch3/.ipynb_checkpoints/3_7_6_Exercises-checkpoint.ipynb (84%)
 To https://github.com/pandalabme/notebooks.git
    8f3e555..68ff4d1  main -> main
+[main f2d69b2] auto
+ 4 files changed, 569 insertions(+), 27 deletions(-)
+ create mode 100644 ch4/.ipynb_checkpoints/4_1_5_Exercises-checkpoint.ipynb
+ create mode 100644 ch4/4_1_5_Exercises.ipynb
+To https://github.com/pandalabme/notebooks.git
+   68ff4d1..f2d69b2  main -> main
