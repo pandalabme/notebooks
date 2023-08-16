@@ -327,3 +327,5 @@ def plot(X, Y=None, xlabel=None, ylabel=None, legend=None, xlim=None,
             axes.plot(y, fmt)
     set_axes(axes, xlabel, ylabel, xlim, ylim, xscale, yscale, legend)
 
+def l2_penalty(w):
+    return (w**2).sum()/2

@@ -183,3 +183,13 @@ To https://github.com/pandalabme/notebooks.git
  1 file changed, 6 insertions(+)
 To https://github.com/pandalabme/notebooks.git
    0617364..72a3726  main -> main
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.ipynb_checkpoints/Timer-checkpoint.py
+	.ipynb_checkpoints/d2l-checkpoint.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+Everything up-to-date
