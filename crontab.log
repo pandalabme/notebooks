@@ -193,3 +193,15 @@ Untracked files:
 
 nothing added to commit but untracked files present (use "git add" to track)
 Everything up-to-date
+[main 8f3e555] auto
+ 11 files changed, 1912 insertions(+), 15 deletions(-)
+ rename Timer.py => d2l_utils/.ipynb_checkpoints/Timer-checkpoint.py (100%)
+ mode change 100755 => 100644
+ create mode 100644 d2l_utils/.ipynb_checkpoints/__init__-checkpoint.py
+ create mode 100755 d2l_utils/.ipynb_checkpoints/d2l-checkpoint.py
+ create mode 100755 d2l_utils/Timer.py
+ create mode 100644 d2l_utils/__init__.py
+ create mode 100644 d2l_utils/__pycache__/d2l.cpython-311.pyc
+ rename d2l.py => d2l_utils/d2l.py (99%)
+To https://github.com/pandalabme/notebooks.git
+   81fa975..8f3e555  main -> main

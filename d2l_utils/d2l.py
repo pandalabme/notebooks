@@ -194,8 +194,9 @@ class Trainer(HyperParameters):
         self.train_batch_idx = 0
         self.val_batch_idx = 0
         for i in range(self.max_epochs):
-            self.fit_epoch()
+            train_loss, valid_loss = self.fit_epoch()
             self.epoch += 1
+        return train_loss, valid_loss
             
     def fit_epoch(self):
         raise NotImplementedError
@@ -205,7 +206,7 @@ class Trainer(HyperParameters):
     
     def fit_epoch(self):
         self.model.train()
-        # train_loss,valid_loss = 0, 0
+        train_loss, valid_loss = 0, 0
         for batch in self.train_dataloader:
             # if len(batch[0]) != 32:
             #     print(len(batch[0]))
@@ -219,18 +220,19 @@ class Trainer(HyperParameters):
                     self.clip_gradients(self.gradient_clip_val, self.model)
                 self.optim.step()
             self.train_batch_idx += 1
-            # train_loss += loss.detach().numpy()
+            train_loss += loss.detach().numpy()
         if self.val_dataloader is None:
             # print(f'batch train loss:{train_loss:.2g}, T:{self.model.T}')
-            return
+            return (train_loss, valid_loss)
         self.model.eval()
         for batch in self.val_dataloader:
             with torch.no_grad():
                 loss = self.model.validation_step(self.prepare_batch(batch),
                                                   plot_flag=self.plot_flag)
             self.val_batch_idx += 1
-            # valid_loss += loss.detach().numpy()
+            valid_loss += loss.detach().numpy()
         # print(f'batch train loss:{train_loss:.2g}, valid loss:{valid_loss:.2g}, T:{self.model.T}')
+        return (train_loss, valid_loss)
             
     def clip_gradients(self, grad_clip_val, model):
         params = [p for p in model.parameters() if p.requires_grad]
@@ -278,6 +280,21 @@ class LinearRegressScratch(Module):
     
     def configure_optimizers(self):
         return SGD([self.w, self.b], self.lr)
+    
+class LinearRegression(Module):
+    def __init__(self, lr):
+        super().__init__()
+        self.save_hyperparameters()
+        self.net = nn.LazyLinear(1)
+        self.net.weight.data.normal_(0, 0.01)
+        self.net.bias.data.fill_(0)
+        
+    def forward(self, X):
+        return self.net(X)
+    
+    def loss(self, y_hat, y):
+        fn = nn.MSELoss(reduction='mean')
+        return fn(y_hat, y)
     
 def use_svg_display():
     backend_inline.set_matplotlib_formats('svg')
@@ -329,3 +346,6 @@ def plot(X, Y=None, xlabel=None, ylabel=None, legend=None, xlim=None,
 
 def l2_penalty(w):
     return (w**2).sum()/2
+
+def gen_logrithm_nums(initial_value = 5,growth_factor = 2,num_elements = 12):
+    return [initial_value * growth_factor**i for i in range(num_elements)]
