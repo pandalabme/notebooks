@@ -205,3 +205,8 @@ Everything up-to-date
  rename d2l.py => d2l_utils/d2l.py (99%)
 To https://github.com/pandalabme/notebooks.git
    81fa975..8f3e555  main -> main
+[main 68ff4d1] auto
+ 6 files changed, 9573 insertions(+), 969 deletions(-)
+ rewrite ch3/.ipynb_checkpoints/3_7_6_Exercises-checkpoint.ipynb (84%)
+To https://github.com/pandalabme/notebooks.git
+   8f3e555..68ff4d1  main -> main
