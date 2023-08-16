@@ -173,3 +173,9 @@ To https://github.com/pandalabme/notebooks.git
  1 file changed, 4 insertions(+)
 To https://github.com/pandalabme/notebooks.git
    3931985..2d1e43d  main -> main
+[main 0617364] auto
+ 3 files changed, 236 insertions(+)
+ create mode 100644 ch3/.ipynb_checkpoints/3_6_6_Exercises-checkpoint.ipynb
+ create mode 100644 ch3/3_6_6_Exercises.ipynb
+To https://github.com/pandalabme/notebooks.git
+   2d1e43d..0617364  main -> main
