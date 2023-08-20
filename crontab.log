@@ -586,3 +586,8 @@ To https://github.com/pandalabme/notebooks.git
  1 file changed, 4 insertions(+)
 To https://github.com/pandalabme/notebooks.git
    36da873..d2ec01f  main -> main
+[main adcd1ae] auto
+ 1 file changed, 4 insertions(+)
+fatal: unable to get credential storage lock: File exists
+To https://github.com/pandalabme/notebooks.git
+   d2ec01f..adcd1ae  main -> main
