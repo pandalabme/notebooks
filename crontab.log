@@ -2663,3 +2663,8 @@ To https://github.com/pandalabme/notebooks.git
  1 file changed, 4 insertions(+)
 To https://github.com/pandalabme/notebooks.git
    abc3dd6..3ea21af  main -> main
+[main 96b1028] auto
+ 1 file changed, 4 insertions(+)
+fatal: unable to get credential storage lock: File exists
+To https://github.com/pandalabme/notebooks.git
+   3ea21af..96b1028  main -> main
